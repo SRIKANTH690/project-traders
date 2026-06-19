@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sriram Traders – Premium Panruti Cashews</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="main-nav">
+  <div class="nav-logo" onclick="goHome()">
+    <div class="logo-icon">SP</div>
+    <div>
+      <h1>Sriram Traders</h1>
+      <span>Panruti · Since 2005</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a onclick="goHome();setTimeout(()=>scrollTo2('products'),100)">Products</a>
+    <a onclick="goHome();setTimeout(()=>scrollTo2('about'),100)">About</a>
+    <a onclick="goHome();setTimeout(()=>scrollTo2('journey'),100)">Our Journey</a>
+    <a onclick="goHome();setTimeout(()=>scrollTo2('quote'),100)">Get Quote</a>
+    <a onclick="goHome();setTimeout(()=>scrollTo2('map-section'),100)">Location</a>
+  </div>
+  <div class="nav-actions">
+    <a href="https://wa.me/917339409378" target="_blank" class="btn-nav btn-outline-nav"
+       style="display:flex;align-items:center;gap:6px;">💬 WhatsApp</a>
+    <div id="nav-auth-btns" style="display:flex;gap:8px;align-items:center;">
+      <button class="btn-nav btn-outline-nav" onclick="openModal('login')">Login</button>
+      <button class="btn-nav btn-solid-nav"   onclick="openModal('register')">Register</button>
+    </div>
+    <div id="nav-user-menu" class="user-menu" style="display:none;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <!-- Cart icon -->
+        <div class="cart-icon-wrap" onclick="openModal('cart')" title="View Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8B84B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-badge" id="cart-badge" style="display:none;">0</span>
+        </div>
+        <!-- User avatar -->
+        <div class="user-badge" id="user-badge" onclick="toggleUserMenu()">U</div>
+      </div>
+      <div class="user-dropdown" id="user-dropdown">
+        <a onclick="closeDropdown();showMyOrders()">📦 My Orders</a>
+        <a onclick="closeDropdown();openModal('cart')">🛒 My Cart</a>
+        <a onclick="closeDropdown();goHome();setTimeout(()=>scrollTo2('products'),100)">🏪 Shop</a>
+        <hr>
+        <a onclick="doLogout()" style="color:var(--red);">🚪 Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast"></div>
+
+<!-- ===== WHATSAPP FLOAT ===== -->
+<a class="wa-float" href="https://wa.me/917339409378" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<!-- ===== MAIN SITE ===== -->
+<div id="main-site">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🌿 Farm Direct · Panruti, Tamil Nadu</div>
+      <h1>Premium <em>Panruti</em><br>Cashews Direct<br>to Your Door</h1>
+      <p>World-class cashews from Tamil Nadu's cashew heartland — grown in red laterite soil, processed within 24 hours of harvest, shipped pan-India in 2–5 days.</p>
+      <div class="hero-btns">
+        <button class="btn-hero-primary"   onclick="scrollTo2('products')">Shop Cashews</button>
+        <button class="btn-hero-secondary" onclick="scrollTo2('quote')">Request Quotation</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">19+</div><div class="lbl">Years in Business</div></div>
+        <div class="hero-stat"><div class="num">500+</div><div class="lbl">Registered Farmers</div></div>
+        <div class="hero-stat"><div class="num">6</div><div class="lbl">Premium Grades</div></div>
+        <div class="hero-stat"><div class="num">Pan&#8209;India</div><div class="lbl">Delivery</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products-section" id="products">
+    <div class="section-eye">Our Cashew Grades</div>
+    <h2 class="section-title serif">Choose Your Grade</h2>
+    <p class="section-sub">All our cashews are hand-picked, admin-verified, and vacuum-sealed within 24 hours of processing. Contact us for bulk rates and custom packaging.</p>
+    <div class="grades-grid">
+
+      <!-- W180 -->
+      <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#f5f0e8,#e8dfc8);">
+          <img src="images/180.jpeg" alt="W180 Cashew" onerror="this.style.display='none'">
+          <span class="grade-badge premium-badge">Premium</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">W180</div>
+          <div class="grade-aka">King Cashew · Jumbo Grade</div>
+          <div class="grade-desc">The largest whole cashew kernels — 180 kernels per pound. Exceptional size, buttery texture and rich sweetness. Perfect for gifting and premium use.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>Premium Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="addToCart('W180','King Cashew · Jumbo Grade')">🛒 Add to Cart</button>
+              <button class="btn-whatsapp" onclick="waOrder('W180')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- W240 -->
+      <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#f0ece0,#e0d8c0);">
+          <img src="images/240.jpeg" alt="W240 Cashew" onerror="this.style.display='none'">
+          <span class="grade-badge" style="background:#4A7C59">Popular</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">W240</div>
+          <div class="grade-aka">Extra Large Whole</div>
+          <div class="grade-desc">240 kernels per pound. Slightly smaller than W180, still impressively large. Top choice for retail packs, sweets, and premium snacking.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>A-Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="addToCart('W240','Extra Large Whole')">🛒 Add to Cart</button>
+              <button class="btn-whatsapp" onclick="waOrder('W240')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- W320 -->
+      <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#eae4d4,#d8d0b8);">
+          <img src="images/320.jpeg" alt="W320 Cashew" onerror="this.style.display='none'">
+          <span class="grade-badge" style="background:#C8902A">Best Seller</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">W320</div>
+          <div class="grade-aka">Standard Whole · Most Popular</div>
+          <div class="grade-desc">320 kernels per pound. India's most widely traded cashew grade — ideal balance of size, quality and value. Excellent for cooking and daily use.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>Standard Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="addToCart('W320','Standard Whole · Most Popular')">🛒 Add to Cart</button>
+              <button class="btn-whatsapp" onclick="waOrder('W320')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- W450 -->
+      <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#e4dece,#ccc4ac);">
+          <img src="images/450.jpg" alt="W450 Cashew" onerror="this.style.display='none'">
+          <span class="grade-badge" style="background:#555">Economy</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">W450</div>
+          <div class="grade-aka">Small Whole Kernel</div>
+          <div class="grade-desc">450 kernels per pound. Smaller whole cashews — great value for bulk buyers, confectionery and industrial use. Same freshness, different size.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>Value Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="addToCart('W450','Small Whole Kernel')">🛒 Add to Cart</button>
+              <button class="btn-whatsapp" onclick="waOrder('W450')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JH -->
+      <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#e8e0d0,#d0c8b0);">
+          <img src="images/jh.jpeg" alt="JH Cashew" onerror="this.style.display='none'">
+          <span class="grade-badge" style="background:#7B5EA7">Special</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">JH Grade</div>
+          <div class="grade-aka">Jumbo Half Kernel</div>
+          <div class="grade-desc">Large half kernels — same premium quality as W180 in a halved form. Ideal for ice-creams, baked goods, and premium confectionery.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>Split Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="addToCart('JH','Jumbo Half Kernel')">🛒 Add to Cart</button>
+              <button class="btn-whatsapp" onclick="waOrder('JH')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BB -->
+      <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#dcd4c4,#c4bcac);">
+          <img src="images/bb.jpeg" alt="BB Cashew" onerror="this.style.display='none'">
+          <span class="grade-badge" style="background:#888">Bits</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">BB Grade</div>
+          <div class="grade-aka">Baby Buds</div>
+          <div class="grade-desc">Small broken cashew pieces — maximum flavour at minimum cost. Perfect for kaju katli, mithai, curries, and chutneys. Popular with sweets manufacturers.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>Economy Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="addToCart('BB','Baby Bits')">🛒 Add to Cart</button>
+              <button class="btn-whatsapp" onclick="waOrder('BB')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="about-grid">
+      <div class="about-images">
+        <div class="about-img-main">
+          <img src="https://www.momswhothink.com/wp-content/uploads/2023/06/shutterstock-1392187484-huge-licensed-scaled.jpg" alt="Cashew farming in Panruti" alt="Cashew Processing">
+        </div>
+        <div class="about-img-thumb">
+          <img src="https://tse4.mm.bing.net/th/id/OIP.w3-Ez8gHBlaGzIS1il1GagHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Cashew Farm">
+        </div>
+        <div class="about-years">
+          <div class="num">19+</div>
+          <div class="txt">Years</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-eye">Our Story</div>
+        <h2 class="section-title serif">A Legacy Built on Quality &amp; Trust</h2>
+        <p class="section-sub">Since 2005, Sriram Traders has been the most trusted name for premium Panruti cashews — connecting Tamil Nadu's finest farmers directly with buyers across India.</p>
+        <div class="about-features">
+          <div class="about-feat">
+            <div class="feat-icon">🌱</div>
+            <div class="feat-text">
+              <h4>Farm-to-Door Freshness</h4>
+              <p>We source directly from 500+ registered farmers in Cuddalore district, eliminating middlemen and ensuring maximum freshness.</p>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon">✅</div>
+            <div class="feat-text">
+              <h4>Quality Assured</h4>
+              <p>Every batch is graded, tested, and vacuum-sealed within 24 hours of processing at our state-of-the-art facility.</p>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon">🚚</div>
+            <div class="feat-text">
+              <h4>Pan-India Delivery</h4>
+              <p>We ship to all states via reliable logistics partners, with delivery in 2–5 business days anywhere in India.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="journey-section" id="journey">
+    <div class="section-eye">Farm to Table</div>
+    <h2 class="section-title serif">Our Cashew Journey</h2>
+    <p class="section-sub">Every cashew you receive has gone through a meticulous 7-step journey to ensure the highest quality and freshness.</p>
+    <div class="journey-steps">
+      <div class="journey-step">
+        <div class="step-circle"><span>🌳</span><span class="step-num">1</span></div>
+        <div class="step-title">Harvest</div>
+        <div class="step-desc">Hand-picked from red laterite farms in Panruti</div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle"><span>🔥</span><span class="step-num">2</span></div>
+        <div class="step-title">Roasting</div>
+        <div class="step-desc">Drum-roasted within 24 hrs of harvest</div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle"><span>🔪</span><span class="step-num">3</span></div>
+        <div class="step-title">Shelling</div>
+        <div class="step-desc">Precision shelling to preserve whole kernels</div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle"><span>🌬️</span><span class="step-num">4</span></div>
+        <div class="step-title">Drying</div>
+        <div class="step-desc">Moisture-controlled drying chambers</div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle"><span>⚖️</span><span class="step-num">5</span></div>
+        <div class="step-title">Grading</div>
+        <div class="step-desc">Sorted by size into W180–W450, JH, BB grades</div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle"><span>📦</span><span class="step-num">6</span></div>
+        <div class="step-title">Packing</div>
+        <div class="step-desc">Vacuum-sealed in food-grade packaging</div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle"><span>🚚</span><span class="step-num">7</span></div>
+        <div class="step-title">Delivery</div>
+        <div class="step-desc">Pan-India dispatch within 2–5 business days</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTATION -->
+  <section class="quote-section" id="quote">
+    <div class="section-eye">Get a Quote</div>
+    <h2 class="section-title serif">Request a Quotation</h2>
+    <p class="section-sub">Fill in your requirements and we will send you a competitive quote within 24 hours. Or reach out via WhatsApp or phone.</p>
+    <div class="quote-grid">
+      <div class="quote-info">
+        <h3>Contact Us Directly</h3>
+        <p>We are available Mon–Sat, 9am–6pm IST. For bulk orders and custom packaging, call or WhatsApp us for the fastest response.</p>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-text"><strong>Address</strong>No. 810, South Street, Velankuppam, Kadampuliyur Post, Panruti (TK), Cuddalore (DT), Tamil Nadu – 607103</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div class="contact-text"><strong>Phone</strong>+91 70944 29476<br>+91 73394 09378</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-text"><strong>Email</strong>sriram8128@gmail.com</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">💬</div>
+          <div class="contact-text"><strong>WhatsApp</strong>
+            <a href="https://wa.me/917339409378" target="_blank" style="color:var(--gold);font-weight:600;">+91 73394 09378 →</a>
+          </div>
+        </div>
+      </div>
+      <div class="quote-form">
+        <h3>Quotation Request Form</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Your Name *</label><input type="text" id="q-name" placeholder="Full name"></div>
+          <div class="form-group"><label>Phone Number *</label><input type="tel" id="q-phone" placeholder="+91 XXXXX XXXXX"></div>
+        </div>
+        <div class="form-group"><label>Email Address *</label><input type="email" id="q-email" placeholder="your@email.com"></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Cashew Grade *</label>
+            <select id="q-grade">
+              <option value="">Select Grade</option>
+              <option value="W180">W180 – Jumbo (Premium)</option>
+              <option value="W240">W240 – Extra Large</option>
+              <option value="W320">W320 – Standard Whole</option>
+              <option value="W450">W450 – Small Whole</option>
+              <option value="JH">JH – Jumbo Half</option>
+              <option value="BB">BB – Baby Bits</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Quantity (kg) *</label><input type="number" id="q-qty" placeholder="e.g. 50" min="1"></div>
+        </div>
+        <div class="form-group"><label>Required By Date</label><input type="date" id="q-date"></div>
+        <div class="form-group"><label>Additional Requirements</label><textarea id="q-notes" placeholder="Packaging preference, delivery location, special requirements..."></textarea></div>
+        <div id="quote-err"     class="err-box"></div>
+        <div id="quote-success" class="success-box"></div>
+        <button class="btn-full" onclick="submitQuote()">📋 Send Quotation Request</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="map-section" id="map-section">
+    <div class="map-inner">
+      <div class="section-eye">Our Location</div>
+      <h2 class="section-title serif">Find Us in Panruti</h2>
+      <p class="section-sub">Located in the heart of Panruti — India's cashew capital.</p>
+    </div>
+    <div style="position:relative;width:100%;height:460px;border-radius:14px;overflow:hidden;border:2px solid var(--border);box-shadow:0 8px 32px rgba(0,0,0,.1);">
+      <iframe
+        src="https://maps.google.com/maps?q=11.76638,79.55203&t=m&z=17&ie=UTF8&iwloc=B&output=embed"
+        width="100%" height="100%"
+        style="border:0;display:block;width:100%;height:100%;"
+        allowfullscreen loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <div style="position:absolute;bottom:20px;left:20px;background:white;border-radius:12px;padding:16px 20px;box-shadow:0 4px 20px rgba(0,0,0,.18);max-width:290px;z-index:10;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <span style="font-size:22px;margin-top:2px;">📍</span>
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#1B3A2D;margin-bottom:4px;">Sriram Traders</div>
+            <div style="font-size:12px;color:#4A4A4A;line-height:1.7;">No. 810, South Street, Velankuppam,<br>Kadampuliyur Post, Panruti (TK),<br>Cuddalore (DT), Tamil Nadu – 607103</div>
+            <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+              <a href="https://www.google.com/maps?q=11.76638,79.55203"
+                 target="_blank"
+                 style="background:#1B3A2D;color:#fff;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:600;text-decoration:none;">
+                Open in Maps ↗
+              </a>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=11.76638,79.55203"
+                 target="_blank"
+                 style="background:#C8902A;color:#fff;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:600;text-decoration:none;">
+                Get Directions →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Sriram Traders</h3>
+        <p>Panruti's trusted cashew marketplace. Farm-fresh, admin-verified, vacuum-sealed — delivered pan-India since 2005.</p>
+        <div style="margin-top:16px;">
+          <a href="https://wa.me/917339409378" target="_blank" style="background:#25D366;color:#fff;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:600;">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Cashew Grades</h4>
+        <ul>
+          <li><a onclick="addToCart('W180','King Cashew · Jumbo Grade')">W180 – Jumbo</a></li>
+          <li><a onclick="addToCart('W240','Extra Large Whole')">W240 – Extra Large</a></li>
+          <li><a onclick="addToCart('W320','Standard Whole · Most Popular')">W320 – Standard</a></li>
+          <li><a onclick="addToCart('W450','Small Whole Kernel')">W450 – Small Whole</a></li>
+          <li><a onclick="addToCart('JH','Jumbo Half Kernel')">JH – Jumbo Half</a></li>
+          <li><a onclick="addToCart('BB','Baby Bits')">BB – Baby Bits</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a onclick="scrollTo2('about')">About Us</a></li>
+          <li><a onclick="scrollTo2('journey')">Our Process</a></li>
+          <li><a onclick="scrollTo2('quote')">Get Quote</a></li>
+          <li><a onclick="scrollTo2('map-section')">Location</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>+91 70944 29476</li>
+          <li>+91 73394 09378</li>
+          <li>sriram8128@gmail.com</li>
+          <li style="line-height:1.7;margin-top:4px;">No.810, South Street, Velankuppam, Panruti, TN 607103</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Sriram Traders. All rights reserved.</span>
+      <span>Panruti · Cuddalore · Tamil Nadu</span>
+    </div>
+  </footer>
+
+</div><!-- /main-site -->
+
+<!-- ===== ADMIN PANEL ===== -->
+<div id="admin-panel">
+  <div class="admin-header">
+    <div>
+      <h2>🔐 Sriram Traders – Admin Panel</h2>
+      <p style="font-size:13px;color:#A8C4AF;margin-top:3px;">Manage orders, quotations and customers</p>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <span style="font-size:13px;color:#A8C4AF;">Logged in as Admin</span>
+      <button onclick="doLogout()" style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3);padding:9px 20px;border-radius:8px;cursor:pointer;font-size:14px;font-family:Inter,sans-serif;">Logout</button>
+    </div>
+  </div>
+  <div class="admin-content">
+    <div class="admin-stats">
+      <div class="admin-stat-card"><div class="label">Total Orders</div><div class="value" id="stat-orders">—</div></div>
+      <div class="admin-stat-card"><div class="label">Pending Orders</div><div class="value" id="stat-pending">—</div></div>
+      <div class="admin-stat-card"><div class="label">Quote Requests</div><div class="value" id="stat-quotes">—</div></div>
+      <div class="admin-stat-card"><div class="label">Customers</div><div class="value" id="stat-customers">—</div></div>
+    </div>
+    <div class="admin-tabs">
+      <button class="admin-tab-btn active" onclick="switchAdminTab('orders',this)">Orders</button>
+      <button class="admin-tab-btn"        onclick="switchAdminTab('quotes',this)">Quotations</button>
+      <button class="admin-tab-btn"        onclick="switchAdminTab('customers',this)">Customers</button>
+    </div>
+    <!-- Orders Tab -->
+    <div id="admin-tab-orders" class="admin-tab-content active">
+      <div class="data-table">
+        <div class="data-table-head">
+          <h4>All Orders</h4>
+          <button class="btn-export" onclick="exportData('orders')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export Excel
+          </button>
+        </div>
+        <table>
+          <thead><tr><th>Order ID</th><th>Customer</th><th>Grade</th><th>Qty</th><th>Delivery Address</th><th>Date</th><th>Status</th></tr></thead>
+          <tbody id="orders-tbody"><tr><td colspan="8"><div class="empty-state">Loading…</div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Quotes Tab -->
+    <div id="admin-tab-quotes" class="admin-tab-content">
+      <div class="data-table">
+        <div class="data-table-head">
+          <h4>Quotation Requests</h4>
+          <button class="btn-export" onclick="exportData('quotes')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export Excel
+          </button>
+        </div>
+        <table>
+          <thead><tr><th>Quote ID</th><th>Name</th><th>Phone</th><th>Email</th><th>Grade</th><th>Qty</th><th>Required By</th><th>Notes</th></tr></thead>
+          <tbody id="quotes-tbody"><tr><td colspan="8"><div class="empty-state">Loading…</div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Customers Tab -->
+    <div id="admin-tab-customers" class="admin-tab-content">
+      <div class="data-table">
+        <div class="data-table-head">
+          <h4>Registered Customers</h4>
+          <button class="btn-export" onclick="exportData('customers')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export Excel
+          </button>
+        </div>
+        <table>
+          <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Registered On</th><th>Orders</th></tr></thead>
+          <tbody id="customers-tbody"><tr><td colspan="6"><div class="empty-state">Loading…</div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CUSTOMER LOGIN MODAL ===== -->
+<div class="modal-overlay" id="modal-login">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('login')">✕</button>
+    <h2>Customer Login</h2>
+    <p class="subtitle">Sign in to your Sriram Traders account to place orders</p>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" id="login-email" placeholder="your@email.com">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="login-password" placeholder="Your password"
+             onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div id="login-err" class="err-box"></div>
+    <button class="btn-full" onclick="doLogin()">Sign In</button>
+    <div class="form-switch" style="margin-top:14px;">
+      Don't have an account? <a onclick="switchModal('login','register')">Register here</a>
+    </div>
+    <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);text-align:center;">
+      <span style="font-size:13px;color:var(--text-light);">Are you an admin? </span>
+      <a onclick="switchModal('login','admin-login')" style="color:#8B1A1A;font-weight:700;font-size:13px;cursor:pointer;">Admin Login →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CUSTOMER REGISTER MODAL ===== -->
+<div class="modal-overlay" id="modal-register">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('register')">✕</button>
+    <h2>Create Account</h2>
+    <p class="subtitle">Register to place orders and track your deliveries</p>
+    <div class="form-row">
+      <div class="form-group"><label>First Name *</label><input type="text" id="reg-fname" placeholder="First name"></div>
+      <div class="form-group"><label>Last Name *</label><input type="text" id="reg-lname" placeholder="Last name"></div>
+    </div>
+    <div class="form-group"><label>Email Address *</label><input type="email" id="reg-email" placeholder="your@email.com"></div>
+    <div class="form-group"><label>Phone Number *</label><input type="tel" id="reg-phone" placeholder="+91 XXXXX XXXXX"></div>
+    <div class="form-group"><label>Password * (min 6 chars)</label><input type="password" id="reg-password" placeholder="Create a password"></div>
+    <div class="form-group"><label>Confirm Password *</label>
+      <input type="password" id="reg-confirm" placeholder="Repeat password"
+             onkeydown="if(event.key==='Enter')doRegister()">
+    </div>
+    <div id="reg-err" class="err-box"></div>
+    <button class="btn-full" onclick="doRegister()">Create Account</button>
+    <div class="form-switch">Already registered? <a onclick="switchModal('register','login')">Sign in here</a></div>
+  </div>
+</div>
+
+<!-- ===== ADMIN LOGIN MODAL ===== -->
+<div class="modal-overlay" id="modal-admin-login">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('admin-login')">✕</button>
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="width:60px;height:60px;background:#8B1A1A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px;">🔐</div>
+      <h2 style="color:#8B1A1A;">Admin Login</h2>
+      <p class="subtitle">Restricted access — authorised personnel only</p>
+    </div>
+    <div class="form-group"><label>Admin Email</label><input type="email" id="admin-email" placeholder="admin@sriram.com"></div>
+    <div class="form-group"><label>Admin Password</label>
+      <input type="password" id="admin-pass" placeholder="Admin password"
+             onkeydown="if(event.key==='Enter')doAdminLogin()">
+    </div>
+    <div id="admin-err" class="err-box"></div>
+    <button class="btn-full btn-full-admin" onclick="doAdminLogin()">🔐 Admin Sign In</button>
+    <div class="form-switch"><a onclick="switchModal('admin-login','login')">← Back to customer login</a></div>
+  </div>
+</div>
+
+<!-- ===== CART DRAWER ===== -->
+<div class="drawer-overlay" id="modal-cart">
+  <div class="drawer">
+    <div class="drawer-head">
+      <div class="drawer-head-left">
+        <div class="drawer-head-icon">🛒</div>
+        <div>
+          <h2>My Cart</h2>
+          <span>Your selected cashew grades</span>
+        </div>
+      </div>
+      <button class="drawer-close" onclick="closeModal('cart')">✕</button>
+    </div>
+    <div class="drawer-body" id="cart-items-list"></div>
+    <div class="drawer-foot" id="cart-footer" style="display:none;">
+      <div class="cart-summary">
+        <div>
+          <div class="cart-summary-label">Total Items in Cart</div>
+          <div class="cart-summary-val" id="cart-total-qty">0 kg</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="cart-summary-label">Contact for price</div>
+          <div style="font-size:12px;color:var(--gold-light);margin-top:4px;">+91 73394 09378</div>
+        </div>
+      </div>
+      <button class="btn-cart-checkout" onclick="checkoutFromCart()">
+        ✅ Proceed to Order
+      </button>
+      <button class="btn-cart-clear" onclick="clearCart()">🗑 Clear Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ORDER MODAL ===== -->
+<div class="modal-overlay" id="modal-order">
+  <div class="modal order-modal">
+    <button class="modal-close" onclick="closeModal('order')">✕</button>
+    <h2>Place Your Order</h2>
+    <p class="subtitle">Complete the details below and we will contact you to confirm your order</p>
+    <div class="form-group">
+      <label>Cashew Grade *</label>
+      <select id="order-grade">
+        <option value="W180">W180 – Jumbo (Premium)</option>
+        <option value="W240">W240 – Extra Large</option>
+        <option value="W320">W320 – Standard Whole</option>
+        <option value="W450">W450 – Small Whole</option>
+        <option value="JH">JH – Jumbo Half</option>
+        <option value="BB">BB – Baby Bits</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Quantity (kg) *</label><input type="number" id="order-qty" placeholder="e.g. 10" min="1"></div>
+      <div class="form-group"><label>Phone Number *</label><input type="tel" id="order-phone" placeholder="+91 XXXXX XXXXX"></div>
+    </div>
+    <div class="form-group"><label>Full Delivery Address *</label>
+      <textarea id="order-address" placeholder="House/Flat no., Street, Area..." style="min-height:65px;"></textarea>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>City *</label><input type="text" id="order-city" placeholder="City"></div>
+      <div class="form-group"><label>State *</label><input type="text" id="order-state" placeholder="State"></div>
+    </div>
+    <div class="form-group"><label>Pincode *</label><input type="text" id="order-pincode" placeholder="6-digit pincode" maxlength="6"></div>
+    <div class="form-group">
+      <label>Order Method *</label>
+      <select id="order-method">
+        <option value="platform">Platform Order (we will call to confirm)</option>
+        <option value="whatsapp">Send via WhatsApp directly</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Special Instructions</label><input type="text" id="order-notes" placeholder="Packaging, delivery time preference, etc."></div>
+    <div id="order-err" class="err-box"></div>
+    <button class="btn-full" onclick="submitOrder()">✅ Confirm Order</button>
+  </div>
+</div>
+
+<!-- ===== MY ORDERS DRAWER ===== -->
+<div class="drawer-overlay" id="modal-myorders">
+  <div class="drawer">
+    <div class="drawer-head">
+      <div class="drawer-head-left">
+        <div class="drawer-head-icon">📦</div>
+        <div>
+          <h2>My Orders</h2>
+          <span>Your cashew order history</span>
+        </div>
+      </div>
+      <button class="drawer-close" onclick="closeModal('myorders')">✕</button>
+    </div>
+    <div class="drawer-body" id="my-orders-list">
+      <div class="drawer-loading">Loading your orders…</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

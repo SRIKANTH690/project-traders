@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sriram Traders – Premium Panruti Cashews</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --dark-green: #1B3A2D;
+    --mid-green: #2D5A3D;
+    --light-green: #4A7C59;
+    --gold: #C8902A;
+    --gold-light: #E8B84B;
+    --text-dark: #1A1A1A;
+    --text-mid: #4A4A4A;
+    --text-light: #777;
+    --white: #FFFFFF;
+    --border: #D8CDB8;
+    --red: #C0392B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text-dark); }
+  .serif { font-family: 'Playfair Display', serif; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    background: var(--dark-green);
+    padding: 0 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 68px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+  .nav-logo .logo-icon { width: 40px; height: 40px; background: var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; color: #fff; font-family: 'Playfair Display', serif; letter-spacing: 0.5px; }
+  .nav-logo h1 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--white); line-height: 1.1; }
+  .nav-logo span { font-size: 11px; color: var(--gold-light); letter-spacing: 2px; text-transform: uppercase; display: block; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { color: #CBD5CC; font-size: 14px; font-weight: 500; transition: color 0.2s; cursor: pointer; }
+  .nav-links a:hover { color: var(--gold-light); }
+  /* FIX: nav-actions and nav-auth-btns must both be flex */
+  .nav-actions { display: flex; gap: 10px; align-items: center; }
+  #nav-auth-btns { display: flex; gap: 8px; align-items: center; }
+  .btn-nav { padding: 8px 18px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+  .btn-outline-nav { background: transparent; border: 1.5px solid var(--gold); color: var(--gold); }
+  .btn-outline-nav:hover { background: var(--gold); color: var(--white); }
+  .btn-solid-nav { background: var(--gold); color: var(--white); }
+  .btn-solid-nav:hover { background: var(--gold-light); }
+  .user-menu { position: relative; }
+  .user-badge { background: var(--gold); color: var(--white); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; cursor: pointer; }
+  .user-dropdown { position: absolute; right: 0; top: 48px; background: var(--white); border-radius: 10px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); padding: 8px 0; min-width: 180px; display: none; z-index: 999; }
+  .user-dropdown.open { display: block; }
+  .user-dropdown a { display: block; padding: 10px 20px; font-size: 14px; color: var(--text-dark); cursor: pointer; }
+  .user-dropdown a:hover { background: #f5f0e8; }
+  .user-dropdown hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; }
+
+  /* ===== MODAL ===== */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 16px; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--white); border-radius: 16px; padding: 36px; width: 100%; max-width: 460px; position: relative; max-height: 90vh; overflow-y: auto; }
+  .modal h2 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--dark-green); margin-bottom: 6px; }
+  .modal .subtitle { color: var(--text-light); font-size: 14px; margin-bottom: 24px; }
+  .modal-close { position: absolute; top: 14px; right: 16px; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--text-light); line-height: 1; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text-mid); margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 8px;
+    font-size: 14px; font-family: 'Inter', sans-serif; background: var(--white); color: var(--text-dark);
+    transition: border-color 0.2s; outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--dark-green); }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .btn-full { width: 100%; padding: 13px; background: var(--dark-green); color: var(--white); border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 8px; transition: background 0.2s; font-family: 'Inter', sans-serif; }
+  .btn-full:hover { background: var(--mid-green); }
+  .btn-full-admin { background: #8B1A1A; }
+  .btn-full-admin:hover { background: #6B1010; }
+  .form-switch { text-align: center; margin-top: 16px; font-size: 14px; color: var(--text-light); }
+  .form-switch a { color: var(--gold); font-weight: 600; cursor: pointer; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .err-box { color: var(--red); font-size: 13px; margin-bottom: 10px; padding: 10px 12px; background: #fff0f0; border-radius: 7px; border-left: 3px solid var(--red); display: none; }
+  .success-box { color: #155724; font-size: 13px; margin-bottom: 10px; padding: 10px 12px; background: #d4edda; border-radius: 7px; border-left: 3px solid #28a745; display: none; }
+
+  /* Login type tabs */
+  .login-tabs { display: flex; margin-bottom: 24px; border-radius: 8px; overflow: hidden; border: 1.5px solid var(--border); }
+  .login-tab { flex: 1; padding: 10px; text-align: center; font-size: 13px; font-weight: 600; cursor: pointer; background: var(--cream); color: var(--text-mid); transition: all 0.2s; border: none; font-family: 'Inter', sans-serif; }
+  .login-tab.active { background: var(--dark-green); color: var(--white); }
+  .login-tab.active.admin-tab { background: #8B1A1A; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--dark-green) 0%, var(--mid-green) 60%, #3D6B4A 100%);
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 6%;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-content { max-width: 560px; z-index: 1; position: relative; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(200,144,42,0.2); border: 1px solid rgba(200,144,42,0.4); color: var(--gold-light); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px,5vw,62px); color: var(--white); line-height: 1.15; margin-bottom: 18px; }
+  .hero h1 em { color: var(--gold-light); font-style: normal; }
+  .hero p { font-size: 17px; color: #A8C4AF; line-height: 1.7; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-hero-primary { background: var(--gold); color: var(--white); padding: 15px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; border: none; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+  .btn-hero-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-hero-secondary { background: transparent; border: 2px solid rgba(255,255,255,0.4); color: var(--white); padding: 15px 32px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+  .btn-hero-secondary:hover { border-color: var(--white); }
+  .hero-stats { display: flex; gap: 32px; margin-top: 48px; flex-wrap: wrap; }
+  .hero-stat { text-align: center; }
+  .hero-stat .num { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--gold-light); font-weight: 900; }
+  .hero-stat .lbl { font-size: 12px; color: #A8C4AF; margin-top: 2px; }
+
+  /* ===== SECTION BASICS ===== */
+  section { padding: 80px 6%; }
+  .section-eye { display: flex; align-items: center; gap: 10px; color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+  .section-eye::before { content: ''; width: 32px; height: 2px; background: var(--gold); }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px,4vw,42px); color: var(--dark-green); margin-bottom: 16px; }
+  .section-sub { font-size: 16px; color: var(--text-mid); line-height: 1.7; max-width: 640px; }
+
+  /* ===== GRADES / PRODUCTS ===== */
+  .products-section { background: var(--white); }
+  .grades-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; margin-top: 48px; }
+  .grade-card { border-radius: 14px; overflow: hidden; border: 1.5px solid var(--border); background: var(--white); transition: transform 0.2s, box-shadow 0.2s; }
+  .grade-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+  .grade-card-img { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 72px; position: relative; overflow: hidden; }
+  .grade-card-img img { width: 100%; height: 100%; object-fit: cover; }
+  .grade-badge { position: absolute; top: 12px; right: 12px; background: var(--dark-green); color: var(--white); padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; z-index: 1; }
+  .premium-badge { background: var(--gold); }
+  .grade-body { padding: 20px; }
+  .grade-name { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--dark-green); margin-bottom: 4px; }
+  .grade-aka { font-size: 12px; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+  .grade-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; }
+  .grade-info { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 10px; }
+  .grade-price { font-size: 13px; color: var(--text-light); }
+  .grade-price strong { font-size: 16px; color: var(--dark-green); display: block; }
+  .btn-order { background: var(--dark-green); color: var(--white); border: none; padding: 9px 16px; border-radius: 7px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s; font-family: 'Inter', sans-serif; }
+  .btn-order:hover { background: var(--mid-green); }
+  .btn-whatsapp { background: #25D366; color: var(--white); border: none; padding: 9px 14px; border-radius: 7px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; gap: 5px; font-family: 'Inter', sans-serif; }
+  .btn-whatsapp:hover { background: #1EBD5A; }
+
+  /* ===== ABOUT SECTION ===== */
+  .about-section { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .about-images { position: relative; }
+  .about-img-main { width: 100%; height: 460px; border-radius: 16px; background: linear-gradient(135deg,#2D5A3D,#1B3A2D); display: flex; align-items: center; justify-content: center; font-size: 110px; overflow: hidden; }
+  .about-img-main img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
+  .about-img-thumb { position: absolute; bottom: -20px; right: -20px; width: 160px; height: 130px; border-radius: 12px; border: 4px solid var(--white); background: #2D5A3D; display: flex; align-items: center; justify-content: center; font-size: 52px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+  .about-img-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .about-years { position: absolute; top: 20px; left: 20px; width: 80px; height: 80px; background: var(--gold); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--white); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  .about-years .num { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; line-height: 1; }
+  .about-years .txt { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .about-features { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
+  .about-feat { display: flex; gap: 16px; align-items: flex-start; }
+  .feat-icon { width: 48px; height: 48px; background: var(--dark-green); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+  .feat-text h4 { font-size: 15px; font-weight: 700; color: var(--dark-green); margin-bottom: 4px; }
+  .feat-text p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ===== JOURNEY SECTION ===== */
+  .journey-section { background: var(--dark-green); }
+  .journey-section .section-eye { color: var(--gold-light); }
+  .journey-section .section-eye::before { background: var(--gold-light); }
+  .journey-section .section-title { color: var(--white); }
+  .journey-section .section-sub { color: #A8C4AF; }
+  .journey-steps { display: flex; align-items: flex-start; gap: 0; margin-top: 52px; overflow-x: auto; padding-bottom: 20px; }
+  .journey-step { flex: 1; min-width: 130px; text-align: center; position: relative; padding: 0 8px; }
+  .journey-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: 24px;
+    color: var(--gold);
+    font-size: 20px;
+    z-index: 1;
+  }
+  .step-circle { width: 80px; height: 80px; background: rgba(255,255,255,0.08); border: 2px solid rgba(200,144,42,0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 14px; position: relative; }
+  .step-num { position: absolute; top: -6px; right: -6px; width: 22px; height: 22px; background: var(--gold); border-radius: 50%; font-size: 11px; font-weight: 800; color: var(--white); display: flex; align-items: center; justify-content: center; }
+  .step-title { font-weight: 700; font-size: 14px; color: var(--white); margin-bottom: 8px; }
+  .step-desc { font-size: 12px; color: #A8C4AF; line-height: 1.5; }
+
+  /* ===== QUOTATION ===== */
+  .quote-section { background: var(--white); }
+  .quote-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; margin-top: 48px; }
+  .quote-info h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--dark-green); margin-bottom: 16px; }
+  .quote-info p { font-size: 14px; color: var(--text-mid); line-height: 1.8; margin-bottom: 24px; }
+  .contact-detail { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .contact-icon { width: 38px; height: 38px; min-width: 38px; background: var(--cream); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .contact-text { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+  .contact-text strong { display: block; font-size: 12px; color: var(--dark-green); font-weight: 700; letter-spacing: 0.5px; margin-bottom: 2px; text-transform: uppercase; }
+  .quote-form { background: var(--cream); border-radius: 16px; padding: 32px; }
+  .quote-form h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--dark-green); margin-bottom: 20px; }
+
+  /* ===== MAP SECTION ===== */
+  .map-section { background: var(--cream); }
+  .map-inner { margin-bottom: 28px; }
+  #gmap { height: 440px; width: 100%; border-radius: 14px; border: 2px solid var(--border); }
+
+  /* ===== WHATSAPP FLOAT ===== */
+  .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 990; background: #25D366; color: var(--white); width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 20px rgba(37,211,102,0.5); cursor: pointer; text-decoration: none; transition: transform 0.2s; }
+  .wa-float:hover { transform: scale(1.1); }
+
+  /* ===== ORDER MODAL ===== */
+  .order-modal { max-width: 520px; }
+
+  /* ===== ADMIN PANEL ===== */
+  #admin-panel { display: none; min-height: 100vh; background: var(--cream); }
+  #admin-panel.active { display: block; }
+  .admin-header { background: var(--dark-green); color: var(--white); padding: 20px 4%; display: flex; align-items: center; justify-content: space-between; }
+  .admin-header h2 { font-family: 'Playfair Display', serif; font-size: 22px; }
+  .admin-content { padding: 32px 4%; }
+  .admin-tabs { display: flex; gap: 0; margin-bottom: 28px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); width: fit-content; }
+  .admin-tab-btn { padding: 10px 24px; font-size: 14px; font-weight: 600; cursor: pointer; background: var(--white); color: var(--text-mid); border: none; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+  .admin-tab-btn.active { background: var(--dark-green); color: var(--white); }
+  .admin-tab-content { display: none; }
+  .admin-tab-content.active { display: block; }
+  .admin-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-bottom: 32px; }
+  .admin-stat-card { background: var(--white); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+  .admin-stat-card .label { font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .admin-stat-card .value { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--dark-green); }
+  .data-table { background: var(--white); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 28px; }
+  .data-table h4 { padding: 16px 20px; font-size: 15px; font-weight: 700; color: var(--dark-green); border-bottom: 1px solid var(--border); }
+  .data-table table { width: 100%; border-collapse: collapse; }
+  .data-table th { background: var(--dark-green); color: var(--white); padding: 11px 16px; text-align: left; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; }
+  .data-table td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid var(--border); color: var(--text-mid); vertical-align: top; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: #f9f7f2; }
+  .status-badge { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .status-pending { background: #FEF3CD; color: #856404; }
+  .status-processing { background: #D1ECF1; color: #0C5460; }
+  .status-delivered { background: #D4EDDA; color: #155724; }
+  .status-select { font-size: 12px; padding: 5px 8px; border-radius: 5px; border: 1px solid var(--border); font-family: 'Inter', sans-serif; cursor: pointer; }
+  .empty-state { text-align: center; padding: 40px 20px; color: var(--text-light); font-size: 14px; }
+
+  /* ===== FOOTER ===== */
+  footer { background: var(--dark-green); color: #A8C4AF; padding: 52px 6% 28px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 40px; }
+  .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--white); margin-bottom: 12px; }
+  .footer-brand p { font-size: 13px; line-height: 1.8; max-width: 240px; }
+  .footer-col h4 { color: var(--white); font-size: 14px; font-weight: 700; margin-bottom: 14px; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 8px; font-size: 13px; }
+  .footer-col a { color: #A8C4AF; transition: color 0.2s; cursor: pointer; }
+  .footer-col a:hover { color: var(--gold-light); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+
+  /* ===== TOAST ===== */
+  .toast { position: fixed; bottom: 100px; right: 28px; background: var(--dark-green); color: var(--white); padding: 14px 22px; border-radius: 10px; font-size: 14px; z-index: 3000; transform: translateY(20px); opacity: 0; transition: all 0.35s; pointer-events: none; box-shadow: 0 4px 20px rgba(0,0,0,0.25); max-width: 300px; }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  @media (max-width: 900px) {
+    .about-grid, .quote-grid, .footer-grid { grid-template-columns: 1fr; }
+    .about-img-thumb { display: none; }
+    .hero-stats { gap: 20px; }
+    .admin-stats { grid-template-columns: repeat(2,1fr); }
+    .nav-links { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="main-nav">
+  <div class="nav-logo" onclick="goHome()">
+    <div class="logo-icon">SP</div>
+    <div>
+      <h1>Sriram Traders</h1>
+      <span>Panruti · Since 2005</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a onclick="goHome();setTimeout(()=>scrollTo2('products'),100)">Products</a>
+    <a onclick="goHome();setTimeout(()=>scrollTo2('about'),100)">About</a>
+    <a onclick="goHome();setTimeout(()=>scrollTo2('journey'),100)">Our Journey</a>
+    <a onclick="goHome();setTimeout(()=>scrollTo2('quote'),100)">Get Quote</a>
+    <a onclick="goHome();setTimeout(()=>scrollTo2('map-section'),100)">Location</a>
+  </div>
+  <div class="nav-actions">
+    <a href="https://wa.me/917339409378" target="_blank" class="btn-nav btn-outline-nav" style="display:flex;align-items:center;gap:6px;text-decoration:none;">💬 WhatsApp</a>
+    <!-- FIX: Separate div with display:flex for auth buttons -->
+    <div id="nav-auth-btns" style="display:flex;gap:8px;align-items:center;">
+      <button class="btn-nav btn-outline-nav" onclick="openModal('login')">Login</button>
+      <button class="btn-nav btn-solid-nav" onclick="openModal('register')">Register</button>
+    </div>
+    <!-- User menu shown after login -->
+    <div id="nav-user-menu" class="user-menu" style="display:none;">
+      <div class="user-badge" id="user-badge" onclick="toggleUserMenu()">U</div>
+      <div class="user-dropdown" id="user-dropdown">
+        <a onclick="closeDropdown();showMyOrders()">📦 My Orders</a>
+        <a onclick="closeDropdown();goHome();setTimeout(()=>scrollTo2('products'),100)">🛒 Shop</a>
+        <hr>
+        <a onclick="doLogout()" style="color:var(--red);">🚪 Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast"></div>
+
+<!-- ===== WHATSAPP FLOAT ===== -->
+<a class="wa-float" href="https://wa.me/917339409378" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<!-- ===== MAIN SITE ===== -->
+<div id="main-site">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🌿 Farm Direct · Panruti, Tamil Nadu</div>
+      <h1>Premium <em>Panruti</em><br>Cashews Direct<br>to Your Door</h1>
+      <p>World-class cashews from Tamil Nadu's cashew heartland — grown in red laterite soil, processed within 24 hours of harvest, shipped pan-India in 2–5 days.</p>
+      <div class="hero-btns">
+        <button class="btn-hero-primary" onclick="scrollTo2('products')">Shop Cashews</button>
+        <button class="btn-hero-secondary" onclick="scrollTo2('quote')">Request Quotation</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">19+</div><div class="lbl">Years in Business</div></div>
+        <div class="hero-stat"><div class="num">500+</div><div class="lbl">Registered Farmers</div></div>
+        <div class="hero-stat"><div class="num">6</div><div class="lbl">Premium Grades</div></div>
+        <div class="hero-stat"><div class="num">Pan&#8209;India</div><div class="lbl">Delivery</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS / GRADES -->
+  <section class="products-section" id="products">
+    <div class="section-eye">Our Cashew Grades</div>
+    <h2 class="section-title serif">Choose Your Grade</h2>
+    <p class="section-sub">All our cashews are hand-picked, admin-verified, and vacuum-sealed within 24 hours of processing. Contact us for bulk rates and custom packaging.</p>
+    <div class="grades-grid">
+
+      <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#f5f0e8,#e8dfc8);">
+          <img src="img/180.jpeg" alt="W180 Cashew" onerror="this.parentElement.innerHTML='<span style=font-size:72px>🥜</span><span class=grade-badge style=background:#C8902A>Premium</span>'">
+          <span class="grade-badge premium-badge">Premium</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">W180</div>
+          <div class="grade-aka">King Cashew · Jumbo Grade</div>
+          <div class="grade-desc">The largest whole cashew kernels — 180 kernels per pound. Exceptional size, buttery texture and rich sweetness. Perfect for gifting and premium use.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>Premium Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="openOrderModal('W180')">Order</button>
+              <button class="btn-whatsapp" onclick="waOrder('W180')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#f0ece0,#e0d8c0);">
+          <img src="img/240.jpeg" alt="W240 Cashew" onerror="this.parentElement.innerHTML='<span style=font-size:72px>🥜</span><span class=grade-badge style=background:#4A7C59>Popular</span>'">
+          <span class="grade-badge" style="background:#4A7C59">Popular</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">W240</div>
+          <div class="grade-aka">Extra Large Whole</div>
+          <div class="grade-desc">240 kernels per pound. Slightly smaller than W180, still impressively large. Top choice for retail packs, sweets, and premium snacking.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>A-Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="openOrderModal('W240')">Order</button>
+              <button class="btn-whatsapp" onclick="waOrder('W240')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#eae4d4,#d8d0b8);">
+          <img src="img/320.jpeg" alt="W320 Cashew" onerror="this.parentElement.innerHTML='<span style=font-size:72px>🥜</span><span class=grade-badge style=background:#C8902A>Best Seller</span>'">
+          <span class="grade-badge" style="background:#C8902A">Best Seller</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">W320</div>
+          <div class="grade-aka">Standard Whole · Most Popular</div>
+          <div class="grade-desc">320 kernels per pound. India's most widely traded cashew grade — ideal balance of size, quality and value. Excellent for cooking and daily use.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>Standard Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="openOrderModal('W320')">Order</button>
+              <button class="btn-whatsapp" onclick="waOrder('W320')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#e4dece,#ccc4ac);">
+          <img src="img/450.jpg" alt="W450 Cashew" onerror="this.parentElement.innerHTML='<span style=font-size:72px>🥜</span><span class=grade-badge style=background:#555>Economy</span>'">
+          <span class="grade-badge" style="background:#555">Economy</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">W450</div>
+          <div class="grade-aka">Small Whole Kernel</div>
+          <div class="grade-desc">450 kernels per pound. Smaller whole cashews — great value for bulk buyers, confectionery and industrial use. Same freshness, different size.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>Value Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="openOrderModal('W450')">Order</button>
+              <button class="btn-whatsapp" onclick="waOrder('W450')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#e8e0d0,#d0c8b0);">
+          <img src="img/jh.jpeg" alt="JH Cashew" onerror="this.parentElement.innerHTML='<span style=font-size:72px>🥜</span><span class=grade-badge style=background:#7B5EA7>Special</span>'">
+          <span class="grade-badge" style="background:#7B5EA7">Special</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">JH Grade</div>
+          <div class="grade-aka">Jumbo Half Kernel</div>
+          <div class="grade-desc">Large half kernels with premium quality. Ideal for sweets, mithai, and bakery applications where full kernels are not required.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>JH Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="openOrderModal('JH')">Order</button>
+              <button class="btn-whatsapp" onclick="waOrder('JH')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#ddd5c5,#c5bda8);">
+          <img src="img/bb.jpeg" alt="BB Cashew" onerror="this.parentElement.innerHTML='<span style=font-size:72px>🥜</span><span class=grade-badge style=background:#1B5E20>Bulk</span>'">
+          <span class="grade-badge" style="background:#1B5E20">Bulk</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">BB Grade</div>
+          <div class="grade-aka">Baby Buds · Broken Kernels</div>
+          <div class="grade-desc">Small pieces and broken bits. Most economical option for snack mixes, ice cream toppings, and industrial food processing.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>BB Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="openOrderModal('BB')">Order</button>
+              <button class="btn-whatsapp" onclick="waOrder('BB')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+       <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#e8e0d0,#d0c8b0);">
+          <img src="img/400.jpg" alt="G-400 Cashew" onerror="this.parentElement.innerHTML='<span style=font-size:72px>🥜</span><span class=grade-badge style=background:#7B5EA7>Special</span>'">
+          <span class="grade-badge" style="background:#7B5EA7">Special</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">400 Grade</div>
+          <div class="grade-aka">Jumbo Full Kernel</div>
+          <div class="grade-desc">400 kernels per pound. Medium-sized whole cashews offering an excellent balance of quality and affordability. Popular for retail packing, snacks, sweets, and everyday consumption.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>400 Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="openOrderModal('JH')">Order</button>
+              <button class="btn-whatsapp" onclick="waOrder('JH')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+       <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#e8e0d0,#d0c8b0);">
+          <img src="img/csp.jpeg" alt="G-400 Cashew" onerror="this.parentElement.innerHTML='<span style=font-size:72px>🥜</span><span class=grade-badge style=background:#7B5EA7>Special</span>'">
+          <span class="grade-badge" style="background:#7B5EA7">Special</span>
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">cutting  Grade</div>
+          <div class="grade-aka">cutting  Kernel</div>
+          <div class="grade-desc">Cashew pieces obtained from premium kernels. Perfect for bakery products, sweets, confectionery, gravies, and food processing industries where uniform cuts are preferred.</div>
+          <div class="grade-info">
+            <div class="grade-price"><strong>cutting  Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="openOrderModal('JH')">Order</button>
+              <button class="btn-whatsapp" onclick="waOrder('JH')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <div class="grade-card">
+        <div class="grade-card-img" style="background:linear-gradient(135deg,#e8e0d0,#d0c8b0);">
+          <img src="img/sp.webp" alt="Sp Cashew" onerror="this.parentElement.innerHTML='<span style=font-size:72px>🥜</span><span class=grade-badge style=background:#7B5EA7>Special</span>'">
+          <!-- <span class="grade-badge" style="background:#7B5EA7">Special</span> -->
+        </div>
+        <div class="grade-body">
+          <div class="grade-name">SP Grade</div>
+          <div class="grade-aka">SP Kernel</div>
+          <div class="grade-desc">Naturally split cashew kernels with excellent taste and freshness. Widely used in sweets, desserts, cooking, and bulk food preparation while offering great value.</div>
+          <!-- <div class="grade-desc">Large half kernels with premium quality. Ideal for sweets, mithai, and bakery applications where full kernels are not required.</div> -->
+          <div class="grade-info">
+            <div class="grade-price"><strong>SP Grade</strong>Contact for price</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-order" onclick="openOrderModal('JH')">Order</button>
+              <button class="btn-whatsapp" onclick="waOrder('JH')">💬 WA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="about-grid">
+      <div class="about-images">
+        <div class="about-img-main">
+             <img src="https://www.momswhothink.com/wp-content/uploads/2023/06/shutterstock-1392187484-huge-licensed-scaled.jpg" alt="Panruti Cashew Farm">
+        </div>
+        <div class="about-img-thumb">
+          <img src="https://tse4.mm.bing.net/th/id/OIP.w3-Ez8gHBlaGzIS1il1GagHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Cashew Kernels">
+        </div>
+        <div class="about-years"><div class="num">19+</div><div class="txt">Years</div></div>
+      </div>
+      <div>
+        <div class="section-eye">About Us</div>
+        <h2 class="section-title serif">Born in Panruti,<br>Tamil Nadu's Cashew Heart</h2>
+        <p style="color:var(--text-mid);font-size:15px;line-height:1.8;margin-bottom:14px;">Panruti, located in Cuddalore district, is the undisputed cashew capital of India. For over three decades, our farmers have cultivated world-class cashews in the region's unique red laterite soil and tropical climate — conditions that produce cashews of unrivaled size and sweetness.</p>
+        <p style="color:var(--text-mid);font-size:15px;line-height:1.8;margin-bottom:28px;">Sriram Traders was built to eliminate exploitative middlemen and ensure that farmers receive fair prices while buyers get the freshest, most genuine product directly from the source.</p>
+        <div class="about-features">
+          <div class="about-feat">
+            <div class="feat-icon">👨‍🌾</div>
+            <div class="feat-text"><h4>Direct Farmer Connection</h4><p>500+ registered farmers sell directly to buyers, cutting out exploitative agents and improving farmer income by up to 30%.</p></div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon">✅</div>
+            <div class="feat-text"><h4>Admin-Verified Listings</h4><p>Every product is reviewed and approved by our quality team before it is made available to buyers publicly.</p></div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon">📦</div>
+            <div class="feat-text"><h4>Vacuum-Sealed Freshness</h4><p>Processed and packed within 24 hours of harvest for maximum freshness and shelf life, delivered anywhere in India.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="journey-section" id="journey">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <div class="section-eye" style="justify-content:center;">Transparency</div>
+      <h2 class="section-title serif" style="color:var(--white);">Farm to Doorstep Journey</h2>
+      <p class="section-sub" style="margin:0 auto;">Track every cashew's journey from harvest to your hands.</p>
+    </div>
+    <div class="journey-steps">
+      <div class="journey-step">
+        <div class="step-circle">🌱<span class="step-num">1</span></div>
+        <div class="step-title">Cultivation</div>
+        <div class="step-desc">Cashew trees grown in Panruti's red laterite soil. Harvest season: Feb–May.</div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle">🍎<span class="step-num">2</span></div>
+        <div class="step-title">Harvesting</div>
+        <div class="step-desc">Raw cashew apples plucked by hand at peak ripeness for best quality.</div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle">🔥<span class="step-num">3</span></div>
+        <div class="step-title">Processing</div>
+        <div class="step-desc">Roasted, shelled, peeled and graded by skilled workers within 24 hrs.</div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle">📦<span class="step-num">4</span></div>
+        <div class="step-title">Packaging</div>
+        <div class="step-desc">Vacuum-sealed in food-grade packaging for freshness and long shelf life.</div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle">🚚<span class="step-num">5</span></div>
+        <div class="step-title">Dispatch</div>
+        <div class="step-desc">Delivered pan-India within 2–5 days with real-time tracking.</div>
+      </div>
+      <div class="journey-step">
+        <div class="step-circle">🏠<span class="step-num">6</span></div>
+        <div class="step-title">Delivered</div>
+        <div class="step-desc">Fresh cashews at your doorstep, farm to table — guaranteed.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTATION + CONTACT -->
+  <section class="quote-section" id="quote">
+    <div class="section-eye">Get a Quote</div>
+    <h2 class="section-title serif">Request a Quotation</h2>
+    <p class="section-sub">Fill in your requirements and we will send you a competitive quote within 24 hours. Or reach out via WhatsApp or phone.</p>
+    <div class="quote-grid">
+      <div class="quote-info">
+        <h3>Contact Us Directly</h3>
+        <p>We are available Mon–Sat, 9am–6pm IST. For bulk orders and custom packaging, call or WhatsApp us for the fastest response.</p>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-text"><strong>Address</strong>No. 810, South Street, Velankuppam, Kadampuliyur Post, Panruti (TK), Cuddalore (DT), Tamil Nadu – 607103</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div class="contact-text"><strong>Phone</strong>+91 70944 29476<br>+91 73394 09378</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-text"><strong>Email</strong>sriram8128@gmail.com</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">💬</div>
+          <div class="contact-text"><strong>WhatsApp</strong><a href="https://wa.me/917339409378" target="_blank" style="color:var(--gold);font-weight:600;">+91 73394 09378 →</a></div>
+        </div>
+      </div>
+      <div class="quote-form">
+        <h3>Quotation Request Form</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Your Name *</label><input type="text" id="q-name" placeholder="Full name"></div>
+          <div class="form-group"><label>Phone Number *</label><input type="tel" id="q-phone" placeholder="+91 XXXXX XXXXX"></div>
+        </div>
+        <div class="form-group"><label>Email Address *</label><input type="email" id="q-email" placeholder="your@email.com"></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Cashew Grade *</label>
+            <select id="q-grade">
+              <option value="">Select Grade</option>
+              <option value="W180">W180 – Jumbo (Premium)</option>
+              <option value="W240">W240 – Extra Large</option>
+              <option value="W320">W320 – Standard Whole</option>
+              <option value="W450">W450 – Small Whole</option>
+              <option value="JH">JH – Jumbo Half</option>
+              <option value="BB">BB – Baby Bits</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Quantity (kg) *</label><input type="number" id="q-qty" placeholder="e.g. 50" min="1"></div>
+        </div>
+        <div class="form-group"><label>Required By Date</label><input type="date" id="q-date"></div>
+        <div class="form-group"><label>Additional Requirements</label><textarea id="q-notes" placeholder="Packaging preference, delivery location, special requirements..."></textarea></div>
+        <div id="quote-err" class="err-box"></div>
+        <div id="quote-success" class="success-box"></div>
+        <button class="btn-full" onclick="submitQuote()">📋 Send Quotation Request</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="map-section" id="map-section">
+    <div class="map-inner">
+      <div class="section-eye">Our Location</div>
+      <h2 class="section-title serif">Find Us in Panruti</h2>
+      <p class="section-sub">Located in the heart of Panruti — India's cashew capital. Visit us or use the map to plan your route.</p>
+    </div>
+    <div style="position:relative;width:100%;height:460px;border-radius:14px;overflow:hidden;border:2px solid var(--border);box-shadow:0 8px 32px rgba(0,0,0,0.1);">
+      <iframe
+        id="gmap"
+        src="https://maps.google.com/maps?q=Panruti,Tamil+Nadu,India&t=m&z=14&ie=UTF8&iwloc=B&output=embed"
+        width="100%" height="100%"
+        style="border:0;display:block;width:100%;height:100%;min-height:460px;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <!-- Overlay card with address -->
+      <div style="position:absolute;bottom:20px;left:20px;background:white;border-radius:12px;padding:16px 20px;box-shadow:0 4px 20px rgba(0,0,0,0.18);max-width:280px;z-index:10;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <span style="font-size:22px;margin-top:2px;">📍</span>
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#1B3A2D;margin-bottom:4px;">Sriram Traders</div>
+            <div style="font-size:12px;color:#4A4A4A;line-height:1.7;">No. 810, South Street, Velankuppam,<br>Kadampuliyur Post, Panruti (TK),<br>Cuddalore (DT), Tamil Nadu – 607103</div>
+            <a href="https://www.google.com/maps/search/Panruti+Tamil+Nadu+607103+South+Street" target="_blank"
+               style="display:inline-block;margin-top:8px;background:#1B3A2D;color:#fff;padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600;text-decoration:none;">
+              Open in Maps ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Sriram Traders</h3>
+        <p>Panruti's trusted cashew marketplace. Farm-fresh, admin-verified, vacuum-sealed — delivered pan-India since 2005.</p>
+        <div style="margin-top:16px;display:flex;gap:12px;">
+          <a href="https://wa.me/917339409378" target="_blank" style="background:#25D366;color:#fff;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Cashew Grades</h4>
+        <ul>
+          <li><a onclick="openOrderModal('W180')">W180 – Jumbo</a></li>
+          <li><a onclick="openOrderModal('W240')">W240 – Extra Large</a></li>
+          <li><a onclick="openOrderModal('W320')">W320 – Standard</a></li>
+          <li><a onclick="openOrderModal('W450')">W450 – Small Whole</a></li>
+          <li><a onclick="openOrderModal('JH')">JH – Jumbo Half</a></li>
+          <li><a onclick="openOrderModal('BB')">BB – Baby Bits</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a onclick="scrollTo2('about')">About Us</a></li>
+          <li><a onclick="scrollTo2('journey')">Our Process</a></li>
+          <li><a onclick="scrollTo2('quote')">Get Quote</a></li>
+          <li><a onclick="scrollTo2('map-section')">Location</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>+91 70944 29476</li>
+          <li>+91 73394 09378</li>
+          <li>sriram8128@gmail.com</li>
+          <li style="line-height:1.7;margin-top:4px;">No.810, South Street, Velankuppam, Panruti, TN 607103</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Sriram Traders. All rights reserved.</span>
+      <span>Panruti · Cuddalore · Tamil Nadu</span>
+    </div>
+  </footer>
+
+</div><!-- /main-site -->
+
+<!-- ===== ADMIN PANEL ===== -->
+<div id="admin-panel">
+  <div class="admin-header">
+    <div>
+      <h2>🔐 Sriram Traders – Admin Panel</h2>
+      <p style="font-size:13px;color:#A8C4AF;margin-top:3px;">Manage orders, quotations and customers</p>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <span style="font-size:13px;color:#A8C4AF;">Logged in as Admin</span>
+      <button onclick="doLogout()" style="background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.3);padding:9px 20px;border-radius:8px;cursor:pointer;font-size:14px;font-family:Inter,sans-serif;">Logout</button>
+    </div>
+  </div>
+  <div class="admin-content">
+    <!-- Stats -->
+    <div class="admin-stats">
+      <div class="admin-stat-card"><div class="label">Total Orders</div><div class="value" id="stat-orders">0</div></div>
+      <div class="admin-stat-card"><div class="label">Pending Orders</div><div class="value" id="stat-pending">0</div></div>
+      <div class="admin-stat-card"><div class="label">Quote Requests</div><div class="value" id="stat-quotes">0</div></div>
+      <div class="admin-stat-card"><div class="label">Customers</div><div class="value" id="stat-customers">0</div></div>
+    </div>
+    <!-- Tabs -->
+    <div class="admin-tabs">
+      <button class="admin-tab-btn active" onclick="switchAdminTab('orders',this)">Orders</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab('quotes',this)">Quotations</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab('customers',this)">Customers</button>
+    </div>
+    <!-- Orders Tab -->
+    <div id="admin-tab-orders" class="admin-tab-content active">
+      <div class="data-table">
+        <h4>All Orders</h4>
+        <table>
+          <thead><tr><th>Order ID</th><th>Customer</th><th>Grade</th><th>Qty</th><th>City / Pincode</th><th>Phone</th><th>Date</th><th>Status</th></tr></thead>
+          <tbody id="orders-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Quotes Tab -->
+    <div id="admin-tab-quotes" class="admin-tab-content">
+      <div class="data-table">
+        <h4>Quotation Requests</h4>
+        <table>
+          <thead><tr><th>Quote ID</th><th>Name</th><th>Phone</th><th>Email</th><th>Grade</th><th>Qty</th><th>Required By</th><th>Notes</th></tr></thead>
+          <tbody id="quotes-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Customers Tab -->
+    <div id="admin-tab-customers" class="admin-tab-content">
+      <div class="data-table">
+        <h4>Registered Customers</h4>
+        <table>
+          <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Registered On</th><th>Orders</th></tr></thead>
+          <tbody id="customers-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--                         MODALS                              -->
+<!-- ============================================================ -->
+
+<!-- ===== CUSTOMER LOGIN MODAL ===== -->
+<div class="modal-overlay" id="modal-login">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('login')">✕</button>
+    <h2>Customer Login</h2>
+    <p class="subtitle">Sign in to your Sriram Traders account to place orders</p>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" id="login-email" placeholder="your@email.com">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="login-password" placeholder="Your password" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div id="login-err" class="err-box"></div>
+    <button class="btn-full" onclick="doLogin()">Sign In</button>
+    <div class="form-switch" style="margin-top:14px;">
+      Don't have an account? <a onclick="switchModal('login','register')">Register here</a>
+    </div>
+    <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);text-align:center;">
+      <span style="font-size:13px;color:var(--text-light);">Are you an admin? </span>
+      <a onclick="switchModal('login','admin-login')" style="color:#8B1A1A;font-weight:700;font-size:13px;cursor:pointer;">Admin Login →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CUSTOMER REGISTER MODAL ===== -->
+<div class="modal-overlay" id="modal-register">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('register')">✕</button>
+    <h2>Create Account</h2>
+    <p class="subtitle">Register to place orders and track your deliveries</p>
+    <div class="form-row">
+      <div class="form-group"><label>First Name *</label><input type="text" id="reg-fname" placeholder="First name"></div>
+      <div class="form-group"><label>Last Name *</label><input type="text" id="reg-lname" placeholder="Last name"></div>
+    </div>
+    <div class="form-group"><label>Email Address *</label><input type="email" id="reg-email" placeholder="your@email.com"></div>
+    <div class="form-group"><label>Phone Number *</label><input type="tel" id="reg-phone" placeholder="+91 XXXXX XXXXX"></div>
+    <div class="form-group"><label>Password * (min 6 chars)</label><input type="password" id="reg-password" placeholder="Create a password"></div>
+    <div class="form-group"><label>Confirm Password *</label><input type="password" id="reg-confirm" placeholder="Repeat password" onkeydown="if(event.key==='Enter')doRegister()"></div>
+    <div id="reg-err" class="err-box"></div>
+    <button class="btn-full" onclick="doRegister()">Create Account</button>
+    <div class="form-switch">Already registered? <a onclick="switchModal('register','login')">Sign in here</a></div>
+  </div>
+</div>
+
+<!-- ===== ADMIN LOGIN MODAL (separate, styled differently) ===== -->
+<div class="modal-overlay" id="modal-admin-login">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('admin-login')">✕</button>
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="width:60px;height:60px;background:#8B1A1A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px;">🔐</div>
+      <h2 style="color:#8B1A1A;">Admin Login</h2>
+      <p class="subtitle">Restricted access — authorised personnel only</p>
+    </div>
+    <div style="background:#fff8f0;border:1px solid #f0d0a0;border-radius:8px;padding:12px 16px;margin-bottom:18px;font-size:13px;color:#7a4a00;">
+      <b>Default credentials:</b><br>
+      Email: <code>admin@sriram.com</code><br>
+      Password: <code>sriram@2025</code>
+    </div>
+    <div class="form-group"><label>Admin Email</label><input type="email" id="admin-email" placeholder="admin@sriram.com"></div>
+    <div class="form-group"><label>Admin Password</label><input type="password" id="admin-pass" placeholder="Admin password" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
+    <div id="admin-err" class="err-box"></div>
+    <button class="btn-full btn-full-admin" onclick="doAdminLogin()">🔐 Admin Sign In</button>
+    <div class="form-switch"><a onclick="switchModal('admin-login','login')">← Back to customer login</a></div>
+  </div>
+</div>
+
+<!-- ===== ORDER MODAL ===== -->
+<div class="modal-overlay" id="modal-order">
+  <div class="modal order-modal">
+    <button class="modal-close" onclick="closeModal('order')">✕</button>
+    <h2>Place Your Order</h2>
+    <p class="subtitle">Complete the details below and we will contact you to confirm your order</p>
+    <div class="form-group">
+      <label>Cashew Grade *</label>
+      <select id="order-grade">
+        <option value="W180">W180 – Jumbo (Premium)</option>
+        <option value="W240">W240 – Extra Large</option>
+        <option value="W320">W320 – Standard Whole</option>
+        <option value="W450">W450 – Small Whole</option>
+        <option value="JH">JH – Jumbo Half</option>
+        <option value="BB">BB – Baby Bits</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Quantity (kg) *</label><input type="number" id="order-qty" placeholder="e.g. 10" min="1"></div>
+      <div class="form-group"><label>Phone Number *</label><input type="tel" id="order-phone" placeholder="+91 XXXXX XXXXX"></div>
+    </div>
+    <div class="form-group"><label>Full Delivery Address *</label><textarea id="order-address" placeholder="House/Flat no., Street, Area..." style="min-height:65px;"></textarea></div>
+    <div class="form-row">
+      <div class="form-group"><label>City *</label><input type="text" id="order-city" placeholder="City"></div>
+      <div class="form-group"><label>State *</label><input type="text" id="order-state" placeholder="State"></div>
+    </div>
+    <div class="form-group"><label>Pincode *</label><input type="text" id="order-pincode" placeholder="6-digit pincode" maxlength="6"></div>
+    <div class="form-group">
+      <label>Order Method *</label>
+      <select id="order-method">
+        <option value="platform">Platform Order (we will call to confirm)</option>
+        <option value="whatsapp">Send via WhatsApp directly</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Special Instructions</label><input type="text" id="order-notes" placeholder="Packaging, delivery time preference, etc."></div>
+    <div id="order-err" class="err-box"></div>
+    <button class="btn-full" onclick="submitOrder()">✅ Confirm Order</button>
+  </div>
+</div>
+
+<!-- ===== MY ORDERS MODAL ===== -->
+<div class="modal-overlay" id="modal-myorders">
+  <div class="modal" style="max-width:580px;">
+    <button class="modal-close" onclick="closeModal('myorders')">✕</button>
+    <h2>My Orders</h2>
+    <p class="subtitle">All your cashew orders at a glance</p>
+    <div id="my-orders-list" style="margin-top:16px;"></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--                        JAVASCRIPT                           -->
+<!-- ============================================================ -->
+<script>
+// ===== DATA STORE (localStorage) =====
+function getCustomers(){ return JSON.parse(localStorage.getItem('st_customers')||'[]'); }
+function getOrders(){ return JSON.parse(localStorage.getItem('st_orders')||'[]'); }
+function getQuotes(){ return JSON.parse(localStorage.getItem('st_quotes')||'[]'); }
+function getCurrentUser(){ return JSON.parse(localStorage.getItem('st_current')||'null'); }
+function saveCustomers(d){ localStorage.setItem('st_customers',JSON.stringify(d)); }
+function saveOrders(d){ localStorage.setItem('st_orders',JSON.stringify(d)); }
+function saveQuotes(d){ localStorage.setItem('st_quotes',JSON.stringify(d)); }
+function saveCurrentUser(u){ localStorage.setItem('st_current',JSON.stringify(u)); }
+
+const ADMIN_EMAIL = 'admin@sriram.com';
+const ADMIN_PASS  = 'sriram@2025';
+
+// ===== INIT =====
+window.addEventListener('DOMContentLoaded', function(){
+  var u = getCurrentUser();
+  if(u && u.isAdmin){
+    showAdminPanel();
+  } else if(u){
+    showUserNav(u);
+  }
+});
+
+// ===== NAVIGATION =====
+function goHome(){
+  document.getElementById('main-site').style.display = 'block';
+  document.getElementById('admin-panel').style.display = 'none';
+}
+function showAdminPanel(){
+  document.getElementById('main-site').style.display = 'none';
+  document.getElementById('admin-panel').style.display = 'block';
+  document.getElementById('admin-panel').classList.add('active');
+  loadAdminData();
+}
+function scrollTo2(id){
+  var el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth'});
+}
+
+// ===== USER NAV UPDATE =====
+function showUserNav(u){
+  document.getElementById('nav-auth-btns').style.display = 'none';
+  document.getElementById('nav-user-menu').style.display  = 'block';
+  var initial = u.fname ? u.fname[0].toUpperCase() : (u.email ? u.email[0].toUpperCase() : 'U');
+  document.getElementById('user-badge').textContent = initial;
+}
+function resetNav(){
+  document.getElementById('nav-auth-btns').style.display = 'flex';
+  document.getElementById('nav-user-menu').style.display  = 'none';
+  document.getElementById('user-dropdown').classList.remove('open');
+}
+function toggleUserMenu(){
+  document.getElementById('user-dropdown').classList.toggle('open');
+}
+function closeDropdown(){
+  document.getElementById('user-dropdown').classList.remove('open');
+}
+
+// ===== MODAL HELPERS =====
+function openModal(name){
+  var el = document.getElementById('modal-'+name);
+  if(el) el.classList.add('open');
+}
+function closeModal(name){
+  var el = document.getElementById('modal-'+name);
+  if(el) el.classList.remove('open');
+}
+function switchModal(from, to){
+  closeModal(from);
+  openModal(to);
+}
+function showErr(id, msg){
+  var el = document.getElementById(id);
+  if(!el) return;
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+function hideErr(id){
+  var el = document.getElementById(id);
+  if(el) el.style.display = 'none';
+}
+function showSuccess(id, msg){
+  var el = document.getElementById(id);
+  if(!el) return;
+  el.textContent = msg;
+  el.style.display = 'block';
+  setTimeout(function(){ el.style.display='none'; }, 4000);
+}
+
+// ===== TOAST =====
+function showToast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3200);
+}
+
+// ===== CUSTOMER LOGIN =====
+function doLogin(){
+  hideErr('login-err');
+  var email = document.getElementById('login-email').value.trim();
+  var pass  = document.getElementById('login-password').value;
+  if(!email || !pass){ showErr('login-err','Please enter both email and password.'); return; }
+  var customers = getCustomers();
+  var user = customers.find(function(c){ return c.email===email && c.password===pass; });
+  if(!user){ showErr('login-err','Invalid email or password. Please try again.'); return; }
+  saveCurrentUser(user);
+  closeModal('login');
+  showUserNav(user);
+  document.getElementById('login-email').value = '';
+  document.getElementById('login-password').value = '';
+  showToast('Welcome back, ' + user.fname + '!');
+}
+
+// ===== CUSTOMER REGISTER =====
+function doRegister(){
+  hideErr('reg-err');
+  var fname = document.getElementById('reg-fname').value.trim();
+  var lname = document.getElementById('reg-lname').value.trim();
+  var email = document.getElementById('reg-email').value.trim();
+  var phone = document.getElementById('reg-phone').value.trim();
+  var pass  = document.getElementById('reg-password').value;
+  var conf  = document.getElementById('reg-confirm').value;
+  if(!fname||!lname||!email||!phone||!pass||!conf){
+    showErr('reg-err','Please fill in all required fields.'); return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    showErr('reg-err','Please enter a valid email address.'); return;
+  }
+  if(pass.length < 6){
+    showErr('reg-err','Password must be at least 6 characters.'); return;
+  }
+  if(pass !== conf){
+    showErr('reg-err','Passwords do not match.'); return;
+  }
+  var customers = getCustomers();
+  if(customers.find(function(c){ return c.email===email; })){
+    showErr('reg-err','This email is already registered. Please login.'); return;
+  }
+  var newUser = {
+    id: 'CUST' + Date.now(),
+    fname: fname, lname: lname,
+    email: email, phone: phone,
+    password: pass,
+    createdAt: new Date().toISOString()
+  };
+  customers.push(newUser);
+  saveCustomers(customers);
+  saveCurrentUser(newUser);
+  closeModal('register');
+  showUserNav(newUser);
+  // clear fields
+  ['reg-fname','reg-lname','reg-email','reg-phone','reg-password','reg-confirm'].forEach(function(id){
+    document.getElementById(id).value = '';
+  });
+  showToast('Account created! Welcome, ' + fname + '!');
+}
+
+// ===== ADMIN LOGIN (fully separate) =====
+function doAdminLogin(){
+  hideErr('admin-err');
+  var email = document.getElementById('admin-email').value.trim();
+  var pass  = document.getElementById('admin-pass').value;
+  if(!email || !pass){ showErr('admin-err','Please enter admin credentials.'); return; }
+  if(email === ADMIN_EMAIL && pass === ADMIN_PASS){
+    var adminUser = { email: ADMIN_EMAIL, fname: 'Admin', isAdmin: true };
+    saveCurrentUser(adminUser);
+    closeModal('admin-login');
+    document.getElementById('admin-email').value = '';
+    document.getElementById('admin-pass').value = '';
+    showAdminPanel();
+    showToast('Welcome, Admin!');
+  } else {
+    showErr('admin-err','Invalid admin credentials. Please check and try again.');
+  }
+}
+
+// ===== LOGOUT =====
+function doLogout(){
+  localStorage.removeItem('st_current');
+  resetNav();
+  goHome();
+  showToast('You have been logged out.');
+}
+
+// ===== ORDER MODAL =====
+function openOrderModal(grade){
+  var u = getCurrentUser();
+  if(!u){ showToast('Please login to place an order.'); openModal('login'); return; }
+  if(u.isAdmin){ showToast('Admin cannot place orders. Please login as a customer.'); return; }
+  document.getElementById('order-grade').value = grade || 'W320';
+  document.getElementById('order-phone').value = u.phone || '';
+  hideErr('order-err');
+  openModal('order');
+}
+
+function submitOrder(){
+  hideErr('order-err');
+  var u = getCurrentUser();
+  if(!u){ showErr('order-err','Session expired. Please login again.'); return; }
+  var grade   = document.getElementById('order-grade').value;
+  var qty     = document.getElementById('order-qty').value.trim();
+  var phone   = document.getElementById('order-phone').value.trim();
+  var address = document.getElementById('order-address').value.trim();
+  var city    = document.getElementById('order-city').value.trim();
+  var state   = document.getElementById('order-state').value.trim();
+  var pincode = document.getElementById('order-pincode').value.trim();
+  var method  = document.getElementById('order-method').value;
+  var notes   = document.getElementById('order-notes').value.trim();
+  if(!qty||!phone||!address||!city||!state||!pincode){
+    showErr('order-err','Please fill all required fields.'); return;
+  }
+  if(parseInt(qty) < 1){ showErr('order-err','Quantity must be at least 1 kg.'); return; }
+  if(!/^\d{6}$/.test(pincode)){ showErr('order-err','Pincode must be exactly 6 digits.'); return; }
+  if(method === 'whatsapp'){
+    var msg = 'Hello Sriram Traders!\n\nNew Order:\nName: ' + u.fname + ' ' + u.lname +
+              '\nGrade: ' + grade + '\nQty: ' + qty + ' kg\nPhone: ' + phone +
+              '\nAddress: ' + address + ', ' + city + ', ' + state + ' - ' + pincode +
+              (notes ? '\nNotes: ' + notes : '');
+    window.open('https://wa.me/917339409378?text=' + encodeURIComponent(msg), '_blank');
+    closeModal('order');
+    clearOrderForm();
+    return;
+  }
+  var orders = getOrders();
+  var order = {
+    id: 'ORD' + Date.now(),
+    customerId: u.id,
+    customerName: u.fname + ' ' + u.lname,
+    email: u.email,
+    grade: grade, qty: qty,
+    phone: phone, address: address,
+    city: city, state: state, pincode: pincode,
+    notes: notes, status: 'Pending',
+    date: new Date().toISOString()
+  };
+  orders.push(order);
+  saveOrders(orders);
+  closeModal('order');
+  clearOrderForm();
+  showToast('Order placed! We will call you to confirm.');
+}
+
+function clearOrderForm(){
+  ['order-qty','order-phone','order-address','order-city','order-state','order-pincode','order-notes'].forEach(function(id){
+    document.getElementById(id).value = '';
+  });
+}
+
+// ===== MY ORDERS =====
+function showMyOrders(){
+  var u = getCurrentUser();
+  if(!u) return;
+  var orders = getOrders().filter(function(o){ return o.customerId === u.id; });
+  var list = document.getElementById('my-orders-list');
+  if(!orders.length){
+    list.innerHTML = '<div class="empty-state">You have not placed any orders yet.<br><a onclick="closeModal(\'myorders\');scrollTo2(\'products\')" style="color:var(--gold);cursor:pointer;font-weight:600;">Shop now →</a></div>';
+  } else {
+    list.innerHTML = orders.slice().reverse().map(function(o){
+      var cls = o.status==='Pending'?'status-pending':o.status==='Processing'?'status-processing':'status-delivered';
+      return '<div style="border:1.5px solid var(--border);border-radius:10px;padding:18px;margin-bottom:12px;">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">' +
+        '<span style="font-weight:700;color:var(--dark-green);font-size:14px;">' + o.id + '</span>' +
+        '<span class="status-badge ' + cls + '">' + o.status + '</span></div>' +
+        '<div style="font-size:13px;color:var(--text-mid);line-height:2;">' +
+        '<b>Grade:</b> ' + o.grade + '&nbsp;&nbsp;|&nbsp;&nbsp;<b>Qty:</b> ' + o.qty + ' kg<br>' +
+        '<b>Delivery:</b> ' + o.address + ', ' + o.city + ', ' + o.state + ' – ' + o.pincode + '<br>' +
+        '<b>Phone:</b> ' + o.phone + '<br>' +
+        '<b>Ordered on:</b> ' + new Date(o.date).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}) +
+        (o.notes ? '<br><b>Notes:</b> ' + o.notes : '') +
+        '</div></div>';
+    }).join('');
+  }
+  openModal('myorders');
+}
+
+// ===== WHATSAPP DIRECT =====
+function waOrder(grade){
+  var msg = 'Hello Sriram Traders! I am interested in ordering ' + grade + ' cashews. Please share the price and availability.';
+  window.open('https://wa.me/917339409378?text=' + encodeURIComponent(msg), '_blank');
+}
+
+// ===== QUOTATION FORM =====
+function submitQuote(){
+  hideErr('quote-err');
+  var name  = document.getElementById('q-name').value.trim();
+  var phone = document.getElementById('q-phone').value.trim();
+  var email = document.getElementById('q-email').value.trim();
+  var grade = document.getElementById('q-grade').value;
+  var qty   = document.getElementById('q-qty').value.trim();
+  var date  = document.getElementById('q-date').value;
+  var notes = document.getElementById('q-notes').value.trim();
+  if(!name||!phone||!email||!grade||!qty){
+    showErr('quote-err','Please fill in all required fields marked with *.'); return;
+  }
+  var quotes = getQuotes();
+  quotes.push({
+    id: 'QT' + Date.now(),
+    name: name, phone: phone, email: email,
+    grade: grade, qty: qty, date: date, notes: notes,
+    submittedAt: new Date().toISOString()
+  });
+  saveQuotes(quotes);
+  ['q-name','q-phone','q-email','q-qty','q-date','q-notes'].forEach(function(id){
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('q-grade').value = '';
+  showSuccess('quote-success', 'Quotation request submitted! We will reply within 24 hours.');
+}
+
+// ===== ADMIN PANEL DATA =====
+function loadAdminData(){
+  var orders    = getOrders();
+  var quotes    = getQuotes();
+  var customers = getCustomers();
+  document.getElementById('stat-orders').textContent    = orders.length;
+  document.getElementById('stat-pending').textContent   = orders.filter(function(o){ return o.status==='Pending'; }).length;
+  document.getElementById('stat-quotes').textContent    = quotes.length;
+  document.getElementById('stat-customers').textContent = customers.length;
+  renderOrdersTable(orders);
+  renderQuotesTable(quotes);
+  renderCustomersTable(customers, orders);
+}
+
+function renderOrdersTable(orders){
+  var tbody = document.getElementById('orders-tbody');
+  if(!orders.length){
+    tbody.innerHTML = '<tr><td colspan="8" class="empty-state">No orders yet</td></tr>';
+    return;
+  }
+  tbody.innerHTML = orders.slice().reverse().map(function(o){
+    return '<tr>' +
+      '<td style="font-family:monospace;font-size:11px;">' + o.id + '</td>' +
+      '<td><b>' + escH(o.customerName) + '</b><br><span style="font-size:11px;color:var(--text-light);">' + escH(o.email) + '</span></td>' +
+      '<td><b>' + escH(o.grade) + '</b></td>' +
+      '<td>' + escH(o.qty) + ' kg</td>' +
+      '<td>' + escH(o.city) + '<br>' + escH(o.pincode) + '</td>' +
+      '<td>' + escH(o.phone) + '</td>' +
+      '<td style="font-size:11px;">' + new Date(o.date).toLocaleDateString('en-IN') + '</td>' +
+      '<td><select class="status-select" onchange="updateOrderStatus(\'' + o.id + '\',this.value)">' +
+        '<option' + (o.status==='Pending'?' selected':'') + '>Pending</option>' +
+        '<option' + (o.status==='Processing'?' selected':'') + '>Processing</option>' +
+        '<option' + (o.status==='Delivered'?' selected':'') + '>Delivered</option>' +
+      '</select></td>' +
+    '</tr>';
+  }).join('');
+}
+
+function renderQuotesTable(quotes){
+  var tbody = document.getElementById('quotes-tbody');
+  if(!quotes.length){
+    tbody.innerHTML = '<tr><td colspan="8" class="empty-state">No quotation requests yet</td></tr>';
+    return;
+  }
+  tbody.innerHTML = quotes.slice().reverse().map(function(q){
+    return '<tr>' +
+      '<td style="font-family:monospace;font-size:11px;">' + q.id + '</td>' +
+      '<td><b>' + escH(q.name) + '</b></td>' +
+      '<td>' + escH(q.phone) + '</td>' +
+      '<td>' + escH(q.email) + '</td>' +
+      '<td><b>' + escH(q.grade) + '</b></td>' +
+      '<td>' + escH(q.qty) + ' kg</td>' +
+      '<td>' + (q.date || '–') + '</td>' +
+      '<td style="max-width:200px;font-size:12px;">' + escH(q.notes||'–') + '</td>' +
+    '</tr>';
+  }).join('');
+}
+
+function renderCustomersTable(customers, orders){
+  var tbody = document.getElementById('customers-tbody');
+  if(!customers.length){
+    tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No registered customers yet</td></tr>';
+    return;
+  }
+  tbody.innerHTML = customers.slice().reverse().map(function(c){
+    var orderCount = orders.filter(function(o){ return o.customerId===c.id; }).length;
+    return '<tr>' +
+      '<td style="font-family:monospace;font-size:11px;">' + c.id + '</td>' +
+      '<td><b>' + escH(c.fname) + ' ' + escH(c.lname) + '</b></td>' +
+      '<td>' + escH(c.email) + '</td>' +
+      '<td>' + escH(c.phone) + '</td>' +
+      '<td style="font-size:12px;">' + new Date(c.createdAt).toLocaleDateString('en-IN') + '</td>' +
+      '<td><b>' + orderCount + '</b></td>' +
+    '</tr>';
+  }).join('');
+}
+
+function updateOrderStatus(id, status){
+  var orders = getOrders();
+  var o = orders.find(function(x){ return x.id===id; });
+  if(o){ o.status = status; saveOrders(orders); }
+  // Refresh stat
+  document.getElementById('stat-pending').textContent = orders.filter(function(o){ return o.status==='Pending'; }).length;
+}
+
+function switchAdminTab(tab, btn){
+  document.querySelectorAll('.admin-tab-content').forEach(function(el){ el.classList.remove('active'); });
+  document.querySelectorAll('.admin-tab-btn').forEach(function(el){ el.classList.remove('active'); });
+  document.getElementById('admin-tab-'+tab).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ===== UTILITY =====
+function escH(str){
+  if(!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.user-menu')){
+    var dd = document.getElementById('user-dropdown');
+    if(dd) dd.classList.remove('open');
+  }
+});
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(function(overlay){
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) overlay.classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
