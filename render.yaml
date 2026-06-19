@@ -1,0 +1,32 @@
+databases:
+  - name: sriram-traders-db
+    databaseName: sriram_traders
+    user: sriram_user
+    plan: free
+    region: singapore
+
+services:
+  - type: web
+    name: sriram-traders
+    runtime: node
+    region: singapore
+    plan: free
+    rootDir: .
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sriram-traders-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: ADMIN_EMAIL
+        value: admin@sriram.com
+      - key: ADMIN_PASSWORD
+        value: sriram@2025
+      - key: NODE_ENV
+        value: production
