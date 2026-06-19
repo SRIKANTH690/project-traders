@@ -30,3 +30,5 @@ services:
         value: sriram@2025
       - key: NODE_ENV
         value: production
+      - key: FIREBASE_PROJECT_ID
+        value: not-configured
